@@ -1,30 +1,37 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue";
+
+const text = ref('');
+const awesome = ref(true)
+const klik = () => {
+  awesome.value = !awesome.value
+}
+// const onInput = (e) =>{
+//   text.value = e.target.value
+// }
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <input v-model=text>
+  <h1>{{ text }}</h1> 
+  <h2 v-if="awesome">Kondisi True</h2>
+  <h2 v-else>Kondisi False</h2>
+
+  <button @click="klik">klik disini</button>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #6610f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+button:hover {
+  background-color: #4e0dcf;
 }
 </style>
